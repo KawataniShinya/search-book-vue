@@ -31,6 +31,20 @@
                     };
                     const queryParams = new URLSearchParams(params);
                     console.log(baseUrl + queryParams);
+
+                    const response = await fetch(baseUrl + queryParams)
+                    .then(response => response.json());
+                    console.log(response.items);
+                    for (let book of response.items) {
+                        let title = book.volumeInfo.title;
+                        let img = book.volumeInfo.imageLinks;
+                        let description = book.volumeInfo.description;
+                        this.searchResults.push({
+                            title: title ? title : '',
+                            image: img ? img.thumbnail : '',
+                            description: description ? description.slice(0, 40) : '',
+                        });
+                    }
                 }
             }
         })
