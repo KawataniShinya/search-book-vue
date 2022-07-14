@@ -2,21 +2,29 @@
   <div>
     <v-container class="mt-5">
       <v-row>
+        <v-col cols="3"></v-col>
         <v-col cols="6">
           <v-text-field outlined label="タイトル検索" v-model = "keyword"></v-text-field>
         </v-col>
+        <v-col cols="3"></v-col>
       </v-row>
       <v-row>
+        <v-col cols="3"></v-col>
         <v-col cols="3">
-          <v-btn color="primary" @click="search(keyword)">
-            検索
-          </v-btn>
+          <div align="center">
+            <v-btn color="primary" @click="search(keyword)">
+              検索
+            </v-btn>
+          </div>
         </v-col>
         <v-col cols="3">
-          <v-btn color="secondary" to="/">
-            一覧に戻る
-          </v-btn>
+          <div align="center">
+            <v-btn color="secondary" to="/">
+              一覧に戻る
+            </v-btn>
+          </div>
         </v-col>
+        <v-col cols="3"></v-col>
       </v-row>
       <div class="my-10"></div>
       <v-row>
@@ -30,11 +38,11 @@
                 <v-card-title>{{ book.title }}</v-card-title>
                 {{ book.description }}
                 <v-spacer></v-spacer>
-                <v-card-action>
+                <v-card-actions>
                   <v-btn fab dark color="indigo" @click="addBookList(index)">
                     <v-icon dark>mdi-plus</v-icon>
                   </v-btn>
-                </v-card-action>
+                </v-card-actions>
               </v-col>
             </v-row>
           </v-card>
