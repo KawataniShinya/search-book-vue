@@ -12,6 +12,28 @@
                 Title : {{ book.title }}
               </v-card-title>
               Read Date :
+              <v-menu
+                v-model="menu"
+                :close-on-content-click="false"
+                :nudge-right="40"
+                transition="scale-transition"
+                offset-y min-width="auto"
+              >
+                <template v-slot:activator="{ on, attrs }">
+                  <v-text-field
+                    v-model="date"
+                    readonly
+                    v-bind="attrs"
+                    v-on="on"
+                  ></v-text-field>
+                </template>
+                <v-date-picker
+                  v-model="date"
+                  @input="menu = false"
+                  locale="jp-ja"
+                  :day-format="date => new Date(date).getDate()"
+                ></v-date-picker>
+              </v-menu>
               Personal Memo :
               <v-textarea solo class="mx-2" v-model="book.memo">
                 {{ book.memo }}
@@ -36,10 +58,12 @@ export default {
   },
   data() {
     return {
-      book: ''
+      book: '',
+      date: (new Date(Date.now() - (new Date()).getTimezoneOffset() * 60000)).toISOString().substr(0, 10),
+      menu: false
     }
   },
-  beforeRouteEnter (to, from, next) {
+  beforeRouteEnter(to, from, next) {
     next(vm => {
       vm.$nextTick(() => {
         vm.book = vm.books[vm.$route.params.id];
@@ -51,5 +75,4 @@ export default {
 </script>
 
 <style>
-
 </style>
