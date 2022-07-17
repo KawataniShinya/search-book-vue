@@ -1,10 +1,13 @@
 <template>
   <div>
     <v-row>
-      <v-col cols="6">
-        <v-btn color="primary" to="/search">検索</v-btn>
+      <v-col cols="12">
+        <div align="center">
+          <v-btn color="primary" to="/search">検索</v-btn>
+        </div>
       </v-col>
     </v-row>
+    <div class="my-10"></div>
     <v-row>
       <v-col cols="12" sm="6" v-for="book in books" :key="book.id">
         <v-card>
@@ -15,6 +18,7 @@
             <v-col cols="8">
               <v-card-title>{{ book.title }}</v-card-title>
               Read Date : {{ book.readDate }}
+              <br>
               Personal Note : {{ book.memo }}
               <v-spacer></v-spacer>
               <v-card-actions>

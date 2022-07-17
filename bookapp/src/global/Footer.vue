@@ -1,5 +1,9 @@
 <template>
-  <div>フッター</div>
+  <div>
+    <v-app-bar>
+      &copy; Kawatani Shinya
+    </v-app-bar>
+  </div>
 </template>
 
 <script>
