@@ -1,6 +1,8 @@
 <template>
   <v-app>
-    <Header />
+    <Header
+      @delete-local-strage="deleteLocalStrage"
+    />
     <v-main>
       <v-container class="mt-5">
         <router-view :books="books" @add-book-list="addBook" @update-book-info="updateBookInfo"/>
@@ -72,6 +74,15 @@ export default {
     },
     goToEditPage(id) {
       this.$router.push(`/edit/${id}`);
+    },
+    deleteLocalStrage() {
+      const isDeleted = 'LocalStrageのデータを削除しますがよろしいですか？'
+      if(window.confirm(isDeleted)) {
+        localStorage.setItem(STORAGE_KEY, '');
+        localStorage.removeItem(STORAGE_KEY);
+        this.books = [];
+        window.location.reload();
+      }
     }
   }
 };
