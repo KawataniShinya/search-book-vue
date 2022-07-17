@@ -34,13 +34,13 @@
                   :day-format="date => new Date(date).getDate()"
                 ></v-date-picker>
               </v-menu>
-              Personal Memo :
+              Personal Note :
               <v-textarea solo class="mx-2" v-model="book.memo">
                 {{ book.memo }}
               </v-textarea>
               <v-card-actions>
                 <v-btn color="secondary" to="/">一覧に戻る</v-btn>
-                <v-btn color="info">保存</v-btn>
+                <v-btn color="info" @click="updateBookInfo">保存</v-btn>
               </v-card-actions>
             </v-col>
           </v-row>
@@ -61,6 +61,15 @@ export default {
       book: '',
       date: (new Date(Date.now() - (new Date()).getTimezoneOffset() * 60000)).toISOString().substr(0, 10),
       menu: false
+    }
+  },
+  methods: {
+    updateBookInfo() {
+      this.$emit('update-book-info', {
+        id: this.$route.params.id,
+        readDate: this.date,
+        memo: this.book.memo
+      })
     }
   },
   beforeRouteEnter(to, from, next) {
