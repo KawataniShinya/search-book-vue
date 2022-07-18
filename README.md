@@ -18,7 +18,7 @@ Vue.js学習のために作成したアプリケーション<br>
 - Node.js
 
 ## Demo
-(準備中)
+![demo](https://user-images.githubusercontent.com/102776020/179430263-11f4e4ae-2a03-43cb-a96d-1ba5528c9433.gif)
 
 ## install and Usage
 1. セットアップ
